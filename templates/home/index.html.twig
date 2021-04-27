@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block carousel %}{% endblock %}
+
+{% block content %}
+    <!-- Three columns of text below the carousel -->
+    <div class="text-center">
+        <h3>Nos meilleures ventes</h3>
+        <p><small>Découvrez nos articles les plus vendus</small></p>
+    </div>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-3">
+                {% include "product/single_product.html.twig" %}
+            </div>
+        {% endfor %}
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">Une équipe de passionée. <span class="text-muted">Avec des professionels.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="{{ asset('/assets/img/first.jpg') }}" class="img-fluid" alt="Un savoir faire Français">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Venez à notre rencontre. <span class="text-muted">Dans nos différentes boutiques.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <img src="{{ asset('/assets/img/second.jpg') }}" class="img-fluid" alt="Une boutique ouverte toute l'année">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+    <!-- /END THE FEATURETTES -->
+{% endblock %}
