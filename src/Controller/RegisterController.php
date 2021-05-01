@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Cart;
 use App\Classe\Mail;
 use App\Entity\User;
 use App\Form\RegisterType;
@@ -24,7 +25,7 @@ class RegisterController extends AbstractController
     /**
      * @Route("/inscription", name="register")
      */
-    public function index(Request $request, UserPasswordEncoderInterface $encoder): Response
+    public function index(Cart $cart, Request $request, UserPasswordEncoderInterface $encoder): Response
     {
         $notification = null;
 
@@ -50,7 +51,7 @@ class RegisterController extends AbstractController
 
                 $mail = new Mail();
                 $content = "Bonjour ".$user->getFirstname()."<br/> Bienvenue sur la première boutique dédiée au made in France, Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione cumque ea natus nobis sequi saepe aliquam fugiat consectetur eos dignissimos.";
-                $mail->send($user->getEmail(), $user->getFirstname(), 'Bienvenue sur La Boutique Française', $content);
+                $mail->send($user->getEmail(), $user->getFirstname(), 'Bienvenue sur SF E-commerce', $content);
 
                 $notification = "Votre inscription s'est bien passé, vous pouvez dès à présent vous connecter à votre compte.";
             } else {
@@ -61,7 +62,8 @@ class RegisterController extends AbstractController
 
         return $this->render('register/index.html.twig', [
             'form' => $form->createView(),
-            'notification' => $notification
+            'notification' => $notification,
+            'cart' => $cart->getFull(),
         ]);
     }
 }

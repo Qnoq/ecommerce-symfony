@@ -1,5 +1,10 @@
 body {
     position: relative;
+    font-family: Didot;
+}
+
+nav {
+    background-color: #34495E;
 }
 
 main {
@@ -50,7 +55,7 @@ main {
 
 .cart-icon {
     height: 20px;
-    padding-left: 20px;
+    padding-left: 4px;
 }
 
 .block-small {

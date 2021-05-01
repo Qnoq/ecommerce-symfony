@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Classe\Cart;
 use App\Classe\Mail;
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,7 +15,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/nous-contacter", name="contact")
      */
-    public function index(Request $request): Response
+    public function index(Cart $cart, Request $request): Response
     {
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
@@ -24,11 +25,12 @@ class ContactController extends AbstractController
             $this->addFlash('notice', 'Merci de nous avoir contacter, notre équipe va vous répondre dans les meilleurs délais.');
 
             // $mail = new Mail();
-            // $mail->send('emeric.stofati@outlook.fr', 'La Boutique Française', '')
+            // $mail->send('emeric.stofati@outlook.fr', 'SF E-commerce', '')
         }
 
         return $this->render('contact/index.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'cart' => $cart->getFull(),
         ]);
     }
 }

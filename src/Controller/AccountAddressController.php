@@ -23,9 +23,11 @@ class AccountAddressController extends AbstractController
     /**
      * @Route("/compte/adresses", name="account_address")
      */
-    public function index(): Response
+    public function index(Cart $cart): Response
     {
-        return $this->render('account/address.html.twig');
+        return $this->render('account/address.html.twig', [
+            'cart' => $cart->getFull(),
+        ]);
     }
 
     /**

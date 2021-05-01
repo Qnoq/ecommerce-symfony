@@ -37,12 +37,13 @@ class OrderSuccessController extends AbstractController
 
             $mail = new Mail();
             $content = "Bonjour ".$order->getUser()->getFirstname()."<br/> Merci pour votre commande, Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione cumque ea natus nobis sequi saepe aliquam fugiat consectetur eos dignissimos.";
-            $mail->send($order->getUser()->getEmail(), $order->getUser()->getFirstname(), 'Votre commande La Boutique Française est validée', $content);
+            $mail->send($order->getUser()->getEmail(), $order->getUser()->getFirstname(), 'Votre commande SF E-commerce est validée', $content);
         }
 
 
         return $this->render('order_success/index.html.twig', [
-            'order' => $order
+            'order' => $order,
+            'cart' => $cart->getFull(),
         ]);
     }
 }

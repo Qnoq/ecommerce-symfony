@@ -6,7 +6,7 @@
     <meta name="description" content="La boutique qui vend du made in France">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.1.1">
-    <title>{% block title %}La boutique française{% endblock %}</title>
+    <title>{% block title %}SF E-commerce{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -34,31 +34,35 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="{{ path('home') }}">La boutique française2</a>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <a class="navbar-brand p-3 " href="{{ path('home') }}">SF E-commerce</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('products') }}">Nos produits</span></a>
+                    <a class="nav-link " href="{{ path('products') }}">Nos produits</span></a>
                 </li>
+                {# <li class="nav-item active">
+                    <a class="nav-link " href="#">Qui sommes-nous ?</span></a>
+                </li> #}
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Qui sommes-nous ?</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ path('contact') }}">Contact</span></a>
+                    <a class="nav-link " href="{{ path('contact') }}">Contact</span></a>
                 </li>
             </ul>
             <div class="navbar-item-custom">
                 {% if app.user %}
-                    <a class="mr-2 ml-2" href="{{ path('account') }}">Mon compte <small>({{ app.user.firstname }})</small></a> | <a class="mr-2 ml-2" href="{{ path('app_logout') }}">Déconnexion</a>
+                    <a class="mr-2 ml-2 " href="{{ path('account') }}">Mon compte <small>({{ app.user.firstname }})</small></a> <span class="">|</span> <a class="mr-2 ml-2 " href="{{ path('app_logout') }}">Déconnexion</a>
                 {% else %}
-                    <a class="mr-2 ml-2" href="{{ path('app_login') }}">Connexion</a> | <a class="mr-2 ml-2" href="{{ path('register') }}">Inscription</a>
+                    <a class="mr-2 ml-2 " href="{{ path('app_login') }}">Connexion</a> 
+                   <span class="">|</span> <a class="mr-2 ml-2 " href="{{ path('register') }}">Inscription</a>
                 {% endif %}
             </div>
-            <a href="{{ path('cart') }}">
+            {% if cart|length > 0 %}
+                <small class="badge badge-warning">{{ cart|length }}</small>
+            {% endif %}
+            <a class="text-dark" href="{{ path('cart') }}">
                 <img src="{{ asset('assets/img/shopping-cart.png') }}" class="cart-icon" alt="Mon panier">
             </a>
         </div>
@@ -116,7 +120,7 @@
 <!-- FOOTER -->
 <footer class="footer-custom">
     <p>
-        &copy; 2017-2020 La boutique Française <br>
+        &copy; 2017-2020 SF E-commerce <br>
         La boutique 100% Made in France. <br>
         <a href="#">Privacy</a> <a href="#">Terms</a>
     </p>

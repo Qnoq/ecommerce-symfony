@@ -17,8 +17,8 @@ class Mail
             'Messages' => [
             [
                 'From' => [
-                'Email' => "emeric.stofati@outlook.fr",
-                'Name' => "La Boutique Française"
+                'Email' => "web-dev@es-wd.com",
+                'Name' => "SF E-commerce"
                 ],
                 'To' => [
                 [
