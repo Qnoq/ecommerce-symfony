@@ -30,7 +30,7 @@ class OrderSuccessController extends AbstractController
             return $this->redirectToRoute('home');
         }
         
-        if(!$order->getState() == 0) {
+        if($order->getState() == 0) {
             $cart->remove();
             $order->setState(1);
             $this->entityManager->flush();
